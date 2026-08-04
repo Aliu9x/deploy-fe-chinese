@@ -1,0 +1,134 @@
+$primary: #ff5c8a;
+$secondary: #3fa9f5;
+$ink: #30283d;
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(255, 92, 138, 0.12);
+  box-shadow: 0 8px 28px rgba(50, 42, 70, 0.08);
+  backdrop-filter: blur(16px);
+
+  .global-container {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+  }
+
+  .header-inner {
+    min-height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: $ink;
+    cursor: pointer;
+    text-align: left;
+    flex-shrink: 0;
+  }
+
+  .brand-icon {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    color: white;
+    font-size: 22px;
+    background: linear-gradient(135deg, $primary, $secondary);
+    box-shadow: 0 8px 18px rgba(255, 92, 138, 0.22);
+  }
+
+  .brand-content { display: grid; }
+  .brand-content strong {
+    font-size: 18px;
+    line-height: 1.2;
+    background: linear-gradient(90deg, $primary, $secondary);
+    background-clip: text;
+    color: transparent;
+  }
+  .brand-content small { color: #83788b; font-size: 11px; }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .nav-link {
+    border: 0;
+    background: transparent;
+    color: #655b70;
+    padding: 10px 11px;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 650;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  .nav-link:hover { color: $primary; background: #fff0f5; }
+  .nav-button { display: inline-flex; align-items: center; gap: 6px; }
+  .caret { font-size: 10px; }
+  .divider-thin { height: 24px; border-color: #eadfe7; }
+  .auth-actions { display: flex; align-items: center; gap: 9px; }
+
+  .btn-login,
+  .btn-register { height: 40px; border-radius: 12px; font-weight: 700; }
+  .btn-login { color: $primary; border-color: #ffc1d4; background: white; }
+  .btn-register {
+    border: 0;
+    background: linear-gradient(90deg, $primary, $secondary);
+    box-shadow: 0 6px 16px rgba(63, 169, 245, 0.2);
+  }
+
+  .user-trigger { cursor: pointer; padding: 5px 8px; border-radius: 12px; }
+  .user-trigger:hover { background: #fff0f5; }
+  .user-email { max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+}
+
+.menu-action {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .app-header {
+    .header-inner { padding: 12px 0; align-items: flex-start; }
+    .header-nav { flex-wrap: wrap; }
+    .nav-link[href="#features"], .nav-link[href="#about"], .divider-thin { display: none; }
+  }
+}
+
+@media (max-width: 720px) {
+  .app-header {
+    position: relative;
+    .global-container { width: min(100% - 24px, 1180px); }
+    .header-inner { min-height: auto; flex-direction: column; align-items: stretch; gap: 10px; }
+    .brand { justify-content: center; }
+    .header-nav { justify-content: center; }
+    .auth-actions { width: 100%; }
+    .auth-actions .ant-btn { flex: 1; }
+    .user-trigger { margin: 0 auto; }
+    .nav-more { display: none; }
+  }
+}
