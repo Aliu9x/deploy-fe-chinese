@@ -32,12 +32,12 @@ declare global {
   }
 
   interface UsersData {
-  result: UserItem[];
-  total: number;
-  page: number;
-  limit: number;
-  totalPages: number;
-}
+    result: UserItem[];
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  }
 
 
   interface UserItem {
@@ -45,11 +45,16 @@ declare global {
     full_name: string;
     email: string;
     phone: string;
-    role: UserRole;
-    status: UserStatus;
-    lastLogin: string | null;
-    createdAt: string;
-    updatedAt: string;
-    avatar?: string | null;
+    role: UpdateUserRole;
+    status: UpdateUserStatus;
+    createdAt?: string;
+    updatedAt?: string;
+  }
+  interface IUpdateUserReq {
+    full_name?: string;
+    email?: string;
+    phone?: string;
+    role?: UpdateUserRole;
+    status?: UpdateUserStatus;
   }
 }

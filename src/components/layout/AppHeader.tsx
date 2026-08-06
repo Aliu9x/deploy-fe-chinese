@@ -32,13 +32,13 @@ const AppHeader: React.FC = () => {
     ...(user?.role === "ADMIN"
       ? [{ label: <Link to="/admin">Trang quản trị</Link>, key: "admin" }]
       : []),
-    {
-      label: <Link to="/account">Quản lý tài khoản</Link>,
-      key: "account",
-    },
+    // {
+    //   label: <Link to="/account">Quản lý tài khoản</Link>,
+    //   key: "account",
+    // },
     {
       label: (
-        <button className="menu-action" type="button" onClick={handleLogout}>
+        <button className="menu-action" type="button" onClick={handleLogout} style={{color: "red"}}>
           Đăng xuất
         </button>
       ),

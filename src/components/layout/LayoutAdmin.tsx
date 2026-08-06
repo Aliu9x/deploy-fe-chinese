@@ -137,7 +137,7 @@ const LayoutAdmin: React.FC = () => {
   ];
 
   const accountMenuItems: MenuProps["items"] = [
-    { label: <Link to="/account">Quản lý tài khoản</Link>, key: "account" },
+   // { label: <Link to="/account">Quản lý tài khoản</Link>, key: "account" },
     { label: <Link to="/">Trang chủ</Link>, key: "home" },
     { type: "divider" },
     {

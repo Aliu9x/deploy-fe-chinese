@@ -28,6 +28,12 @@ export const registerApi = (
   });
 };
 
+// ===== API update user (PATCH /api/v1/users/:id) =====
+export const updateUserApi = (id: string, data: IUpdateUserReq) => {
+  const urlBackend = `/api/v1/users/${id}`;
+  return axios.patch<IBackendRes<UserItem>>(urlBackend, data);
+};
+
 export interface ListUsersParams {
   page?: number;
   limit?: number;
@@ -64,18 +70,4 @@ export const logoutApi = () => {
 //   const urlBackend = `/api/v1/users`;
 //   return axios.post<any>(urlBackend, payload);
 // };
-
-export const updateUserApi = (
-  id: string,
-  body: Partial<{
-    full_name: string;
-    email: string | null;
-    phone: string | null;
-    role: Role;
-    status: "SUSPENDED" | "APPROVED";
-  }>
-) => {
-  return axios.patch(`/api/v1/users/${id}`, body);
-};
-///////////////////////////////////////////////////////////////////////////////////
 

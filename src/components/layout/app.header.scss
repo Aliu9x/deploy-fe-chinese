@@ -119,17 +119,75 @@ $ink: #30283d;
 
   }
 }
-
 @media (max-width: 720px) {
   .app-header {
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;
+    backdrop-filter: none;
+    box-shadow: 0 4px 16px rgba(50, 42, 70, 0.12);
+
     .global-container { width: min(100% - 24px, 1180px); }
-    .header-inner { min-height: auto; flex-direction: column; align-items: stretch; gap: 10px; }
-    .brand { justify-content: center; }
-    .header-nav { justify-content: center; }
-    .header-nav > .nav-link:not(:first-child), .header-nav > .ant-dropdown-trigger { display: none; }
-    .auth-actions { width: 100%; }
-    .auth-actions .ant-btn { flex: 1; }
-    .user-trigger { margin: 0 auto; }
+
+    .header-inner {
+      min-height: auto;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      padding: 10px 0;
+    }
+
+    .brand {
+      justify-content: flex-start;
+    }
+
+    .header-nav {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .nav-more,
+    .nav-optional,
+    .divider-thin {
+      display: none;
+    }
+
+    .header-nav > .nav-link:first-child {
+      padding: 8px 0;
+      flex-shrink: 0;
+    }
+
+    // Đăng nhập / Đăng ký - chia đều phần còn lại, không tràn màn hình
+    .auth-actions {
+      display: flex;
+      gap: 6px;
+      flex: 1;
+      min-width: 0;
+      justify-content: flex-end;
+    }
+    .auth-actions .ant-btn {
+      flex: 0 1 auto;
+      height: 34px;
+      padding: 0 10px;
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+
+    // Avatar + email khi đã đăng nhập
+    .user-trigger {
+      margin: 0;
+      padding: 4px 8px;
+      position: relative;
+      z-index: 1001;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+    .user-email {
+      max-width: 100px;
+      font-size: 12.5px;
+    }
   }
 }

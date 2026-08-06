@@ -1,0 +1,132 @@
+.update-user-modal {
+  .ant-modal-content {
+    padding: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+  }
+
+  .ant-modal-header {
+    margin: 0;
+    padding: 24px 28px 20px;
+    background: linear-gradient(135deg, #1677ff 0%, #4096ff 100%);
+    border-bottom: none;
+
+    .ant-modal-title {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+  }
+
+  .ant-modal-close {
+    top: 20px;
+    right: 20px;
+    color: rgba(255, 255, 255, 0.85);
+
+    &:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  .ant-modal-body {
+    padding: 28px 28px 8px;
+  }
+
+  .ant-modal-footer {
+    padding: 16px 28px 24px;
+    margin-top: 0;
+    border-top: 1px solid #f0f0f0;
+
+    .ant-btn {
+      height: 40px;
+      border-radius: 10px;
+      font-weight: 600;
+      padding-inline: 20px;
+    }
+
+    .ant-btn-primary {
+      background: linear-gradient(135deg, #1677ff 0%, #4096ff 100%);
+      border: none;
+      box-shadow: 0 6px 16px rgba(22, 119, 255, 0.28);
+
+      &:hover {
+        background: linear-gradient(135deg, #0f6ae0 0%, #2f83f5 100%);
+      }
+    }
+
+    .ant-btn-default {
+      border-color: #e2e8f0;
+      color: #64748b;
+
+      &:hover {
+        border-color: #cbd5e1;
+        color: #334155;
+      }
+    }
+  }
+}
+
+.update-user-form {
+  .ant-form-item {
+    margin-bottom: 18px;
+  }
+
+  .ant-form-item-label > label {
+    font-weight: 600;
+    color: #334155;
+    font-size: 13.5px;
+  }
+
+  .ant-input,
+  .ant-select-selector {
+    border-radius: 10px !important;
+    border-color: #e2e8f0;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    min-height: 42px;
+  }
+
+  .ant-select-selector {
+    display: flex;
+    align-items: center;
+  }
+
+  .ant-input:hover,
+  .ant-select:hover .ant-select-selector {
+    border-color: #4096ff;
+  }
+
+  .ant-input:focus,
+  .ant-input-focused,
+  .ant-select-focused .ant-select-selector {
+    border-color: #1677ff !important;
+    box-shadow: 0 0 0 3px rgba(22, 119, 255, 0.12) !important;
+  }
+
+  .ant-form-item-explain-error {
+    font-size: 12.5px;
+    margin-top: 2px;
+  }
+}
+
+.customer-list-page {
+  .ant-table-cell {
+    .ant-btn-icon-only {
+      &.ant-btn-text {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        color: #1677ff;
+        background: rgba(22, 119, 255, 0.08);
+
+        &:hover {
+          background: rgba(22, 119, 255, 0.16);
+          color: #0f6ae0;
+        }
+      }
+    }
+  }
+}

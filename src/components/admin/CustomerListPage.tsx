@@ -18,6 +18,7 @@ import {
   type TableProps,
 } from "antd";
 import {
+  EditOutlined, // [MỚI]
   PlusOutlined,
   ReloadOutlined,
   SearchOutlined,
@@ -26,14 +27,15 @@ import {
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { fetchUsersApi, type ListUsersParams } from "@/services/api";
+import UpdateUserModal, {
+  type UpdateUserFormValues,
+} from "./UpdateUserModal"; // [MỚI] - đổi path cho đúng vị trí bạn đặt file
 import "./customer-list.scss";
 
 const { Title, Text } = Typography;
 
 type UserRole = "ADMIN" | "CUSTOMER";
 type UserStatus = "ACTIVE" | "INACTIVE" | "BLOCKED" | string;
-
-
 
 interface FilterFormValues {
   q?: string;
@@ -84,6 +86,12 @@ const CustomerListPage: React.FC = () => {
     q: "",
     role: "CUSTOMER",
   });
+
+  // [MỚI] - state cho modal cập nhật
+  const [updateModalOpen, setUpdateModalOpen] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+  const [selectedUserValues, setSelectedUserValues] =
+    useState<UpdateUserFormValues | null>(null);
 
   const loadUsers = useCallback(async () => {
     setLoading(true);
@@ -148,6 +156,26 @@ const CustomerListPage: React.FC = () => {
     }
 
     setPage(nextPage);
+  };
+
+  // [MỚI] - mở modal và fill lại thông tin user được chọn
+  const handleOpenUpdateModal = (record: UserItem) => {
+    setSelectedUserId(record.id);
+    setSelectedUserValues({
+      full_name: record.full_name,
+      email: record.email,
+      phone: record.phone,
+      role: record.role as UserRole,
+      status: record.status as any,
+    });
+    setUpdateModalOpen(true);
+  };
+
+  // [MỚI] - đóng modal
+  const handleCloseUpdateModal = () => {
+    setUpdateModalOpen(false);
+    setSelectedUserId(null);
+    setSelectedUserValues(null);
   };
 
   const columns = useMemo<TableProps<UserItem>["columns"]>(
@@ -230,6 +258,20 @@ const CustomerListPage: React.FC = () => {
         key: "createdAt",
         width: 170,
         render: (value: string) => formatDateTime(value),
+      },
+      // [MỚI] - cột thao tác với icon chỉnh sửa
+      {
+        title: "Thao tác",
+        key: "actions",
+        width: 90,
+        fixed: "right",
+        render: (_, record) => (
+          <Button
+            type="text"
+            icon={<EditOutlined />}
+            onClick={() => handleOpenUpdateModal(record)}
+          />
+        ),
       },
     ],
     []
@@ -384,6 +426,15 @@ const CustomerListPage: React.FC = () => {
           />
         </div>
       </Card>
+
+      {/* [MỚI] - modal cập nhật người dùng */}
+      <UpdateUserModal
+        open={updateModalOpen}
+        userId={selectedUserId}
+        initialValues={selectedUserValues}
+        onClose={handleCloseUpdateModal}
+        onSuccess={() => void loadUsers()}
+      />
     </section>
   );
 };
