@@ -1,6 +1,5 @@
 
 import axios from "services/axios.customize";
-import type {Role } from "@/types/file.constants";
 const headers = {
   delay: 1000,
 };
